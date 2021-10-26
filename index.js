@@ -54,25 +54,8 @@ async function convert_audio(input) {
 //////////////// CONFIG //////////////////
 //////////////////////////////////////////
 
-//const SETTINGS_FILE = 'settings.json';
-
 let DISCORD_TOK = process.env.DISCORD_TOK;
 let PREFIX = process.env.PREFIX;
-
-//function loadConfig() {
-//    if (fs.existsSync(SETTINGS_FILE)) {
-//        const CFG_DATA = JSON.parse( fs.readFileSync(SETTINGS_FILE, 'utf8') );
-//        DISCORD_TOK = CFG_DATA.DISCORD_TOK;
-//		PREFIX = CFG_DATA.PREFIX;
-//    }
-//    DISCORD_TOK = process.env.DISCORD_TOK || DISCORD_TOK;
-//	PREFIX = process.env.PREFIX || PREFIX;
-//
-//    if (!DISCORD_TOK)
-//        throw 'invalid or missing DISCORD_TOK'
-//    
-//}
-//loadConfig()
 
 //////////////////////////////////////////
 //////////////////////////////////////////
@@ -173,12 +156,10 @@ async function connect(msg, mapKey) {
 
 const vosk = require('vosk');
 let recs = {}
-if (SPEECH_METHOD === 'vosk') {
-  vosk.setLogLevel(-1);
+vosk.setLogLevel(-1);
 
-  recs = {
+recs = {
 	'ru': new vosk.Recognizer({model: new vosk.Model('vosk_models/ru'), sampleRate: 48000})
-  }
 }
 
 
