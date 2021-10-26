@@ -12,7 +12,7 @@ RUN apt-get -y install curl dirmngr apt-transport-https lsb-release ca-certifica
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get -y install nodejs 
 
-RUN git clone https://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:x-oauth-basic@github.com/danilinao/shpindel.git .
+RUN git clone https://github.com/danilinao/shpindel.git .
 RUN npm install
 RUN npm update
 RUN npm install pm2@latest -g
