@@ -18,4 +18,4 @@ RUN npm install
 RUN npm update
 RUN npm install pm2@latest -g
 
-CMD git pull && npm update && pm2-runtime start
+CMD git pull && npm update && pm2-runtime start index.js
