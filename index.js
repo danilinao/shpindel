@@ -169,6 +169,7 @@ function speak_impl(voice_Connection, mapKey) {
             return
         }
         console.log(`I'm listening to ${user.username}`)
+	try {
         const audioStream = voice_Connection.receiver.createStream(user, { mode: 'pcm' })
         audioStream.on('error',  (e) => { 
             console.log('audioStream: ' + e)
@@ -201,6 +202,9 @@ function speak_impl(voice_Connection, mapKey) {
 
 
         })
+	}catch (e){
+                console.log('recognition error (web?): ' + e)
+            }
     })
 }
 
