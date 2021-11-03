@@ -164,12 +164,13 @@ recs = {
 
 
 function speak_impl(voice_Connection, mapKey) {
-    voice_Connection.on('speaking', async (user, speaking) => {
+    try {
+	voice_Connection.on('speaking', async (user, speaking) => {
         if (speaking.bitfield == 0 || user.bot) {
             return
         }
         console.log(`I'm listening to ${user.username}`)
-	try {
+	
         const audioStream = voice_Connection.receiver.createStream(user, { mode: 'pcm' })
         audioStream.on('error',  (e) => { 
             console.log('audioStream: ' + e)
@@ -202,10 +203,11 @@ function speak_impl(voice_Connection, mapKey) {
 
 
         })
-	}catch (e){
+	
+    })
+	    }catch (e){
                 console.log('recognition error (web?): ' + e)
             }
-    })
 }
 
 function process_commands_query(txt, mapKey, user) {
